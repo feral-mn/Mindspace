@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #edf0f3;
+  --color-surface: #ffffff;
+  --color-ink: #10202e;
+  --color-muted: #5b6b7a;
+  --color-line: #d5dce3;
+  --color-accent: #0e7c7b;
+  --color-accent-dark: #0a5e5d;
+  --color-marker: #f5c518;
+  --color-danger: #b42318;
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html { color-scheme: light; }
+  body { @apply bg-paper text-ink font-sans antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-accent; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold
+           transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer;
+  }
+  .btn-primary { @apply bg-accent text-white hover:bg-accent-dark; }
+  .btn-ghost { @apply border border-line bg-surface text-ink hover:bg-paper; }
+  .btn-danger { @apply text-danger hover:bg-danger/10; }
+  .input {
+    @apply w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm
+           placeholder:text-muted/70 focus:border-accent focus:outline-none;
+  }
+  .label { @apply mb-1.5 block text-sm font-medium; }
+  .marker-note { @apply rounded bg-marker/35 px-2 py-1 text-sm; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
