@@ -12,6 +12,7 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
+"https://mindspace-by-feral.vercel.app"
     // Allows your web app AND a future Chrome extension (chrome-extension://<id>)
     origin: (origin, cb) => {
       if (!origin || origin === env.clientUrl || origin.startsWith('chrome-extension://')) return cb(null, true);
